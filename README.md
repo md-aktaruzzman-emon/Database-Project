@@ -1,5 +1,6 @@
 <p align="center">
   <img src="images/Banner.png" alt="Disaster Relief Resource Management System Banner" width="100%">
+  Banner.png
 </p>
 
 # Disaster Relief Resource Management System
