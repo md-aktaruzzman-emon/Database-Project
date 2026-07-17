@@ -305,9 +305,6 @@ Disaster-Relief-Resource-Management-System
 ## 👥 Contributors (Project Group)
 
 This database project was designed and developed by:
-* **ID: 56**
-* **ID: 69**
-* **ID: 73**
-* **ID: 81**
+Md Emon
 
 *Database Systems Lab Coursework - Computer Science and Engineering.*
