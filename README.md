@@ -1,6 +1,6 @@
 <p align="center">
-  <img src="images/Banner.png" alt="Disaster Relief Resource Management System Banner" width="100%">
-  !{image alt](Banner.png)
+  <img src="Banner.png" alt="Disaster Relief Resource Management System Banner" width="100%">
+
 
 
 </p>
