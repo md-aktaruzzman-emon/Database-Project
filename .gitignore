@@ -1,0 +1,28 @@
+# Backup and temporary files
+*.bak
+*.trn
+*.diff
+*.tmp
+*.log
+
+# SQL Server Management Studio & Visual Studio files
+.vs/
+*.suo
+*.user
+*.sqlproj.user
+*.userprefs
+*.dbmdl
+*.jfm
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Temporary helper scripts
+extract_text.py
+list_media.py
+extract_media.py
+trace_images.py
+trace_images_context.py
+copy_assets.py
+docx_content.txt
