@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Relief Database Schema Showcase</title>
+    <!-- Google Fonts: Outfit (UI) and JetBrains Mono (Code) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for professional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Mermaid JS for client-side diagram rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'base',
+            themeVariables: {
+                background: '#ffffff',
+                primaryColor: '#1E3A5F',
+                primaryTextColor: '#ffffff',
+                primaryBorderColor: '#D1D5DB',
+                lineColor: '#64748B',
+                secondaryColor: '#334155',
+                tertiaryColor: '#ffffff',
+                mainBkg: '#ffffff',
+                nodeBorder: '#D1D5DB'
+            },
+            securityLevel: 'loose'
+        });
+    </script>
+</head>
+<body>
+    <div class="glow-bg"></div>
+
+    <!-- Navigation Header -->
+    <header class="app-header">
+        <div class="logo">
+            <i class="fa-solid fa-house-laptop logo-icon"></i>
+            <div>
+                <h1>DRMS Database</h1>
+                <span class="logo-sub">Disaster Relief Management System Schema Showcase</span>
+            </div>
+        </div>
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="diagrams"><i class="fa-solid fa-diagram-project"></i> Interactive Diagrams</button>
+            <button class="tab-btn" data-tab="dictionary"><i class="fa-solid fa-table"></i> Data Dictionary</button>
+            <button class="tab-btn" data-tab="sql"><i class="fa-solid fa-code"></i> SQL DDL Script</button>
+        </nav>
+        <div class="header-actions">
+            <a href="https://github.com" target="_blank" class="github-btn"><i class="fa-brands fa-github"></i> GitHub Ready</a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="app-container">
+        <!-- Sidebar: Table Selector & Search (Used in Dictionary and Diagrams) -->
+        <aside class="sidebar" id="sidebar-panel">
+            <div class="sidebar-header">
+                <h2>Database Tables</h2>
+                <span class="count-badge">14 Tables</span>
+            </div>
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="search-input" placeholder="Search tables, columns...">
+            </div>
+            
+            <!-- Table Groups -->
+            <div class="table-groups">
+                <!-- Group 1: Disaster Tracking -->
+                <div class="group-section">
+                    <div class="group-title"><i class="fa-solid fa-triangle-exclamation text-disaster"></i> Disaster Tracking</div>
+                    <ul class="table-list">
+                        <li class="table-item" data-table="Location">
+                            <span class="table-name">Location</span>
+                            <span class="badge badge-pk">4 cols</span>
+                        </li>
+                        <li class="table-item" data-table="Disaster">
+                            <span class="table-name">Disaster</span>
+                            <span class="badge badge-pk">6 cols</span>
+                        </li>
+                        <li class="table-item" data-table="Occurrence">
+                            <span class="table-name">Occurrence</span>
+                            <span class="badge badge-pk">6 cols</span>
+                        </li>
+                        <li class="table-item" data-table="Warning">
+                            <span class="table-name">Warning</span>
+                            <span class="badge badge-pk">6 cols</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Group 2: Rescue Operations -->
+                <div class="group-section">
+                    <div class="group-title"><i class="fa-solid fa-kit-medical text-rescue"></i> Rescue & Operations</div>
+                    <ul class="table-list">
+                        <li class="table-item" data-table="RescueTeam">
+                            <span class="table-name">RescueTeam</span>
+                            <span class="badge badge-pk">6 cols</span>
+                        </li>
+                        <li class="table-item" data-table="DisasterAction">
+                            <span class="table-name">DisasterAction</span>
+                            <span class="badge badge-comp">4 cols</span>
+                        </li>
+                        <li class="table-item" data-table="Volunteer">
+                            <span class="table-name">Volunteer</span>
+                            <span class="badge badge-pk">7 cols</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Group 3: Relief Camps -->
+                <div class="group-section">
+                    <div class="group-title"><i class="fa-solid fa-tents text-relief"></i> Relief & Shelter</div>
+                    <ul class="table-list">
+                        <li class="table-item" data-table="ReliefCamp">
+                            <span class="table-name">ReliefCamp</span>
+                            <span class="badge badge-pk">6 cols</span>
+                        </li>
+                        <li class="table-item" data-table="Victim">
+                            <span class="table-name">Victim</span>
+                            <span class="badge badge-pk">6 cols</span>
+                        </li>
+                        <li class="table-item" data-table="ImpactedBy">
+                            <span class="table-name">ImpactedBy</span>
+                            <span class="badge badge-comp">5 cols</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Group 4: Logistics -->
+                <div class="group-section">
+                    <div class="group-title"><i class="fa-solid fa-hand-holding-dollar text-logistics"></i> Logistics & Finance</div>
+                    <ul class="table-list">
+                        <li class="table-item" data-table="Donor">
+                            <span class="table-name">Donor</span>
+                            <span class="badge badge-pk">5 cols</span>
+                        </li>
+                        <li class="table-item" data-table="Resource">
+                            <span class="table-name">Resource</span>
+                            <span class="badge badge-pk">6 cols</span>
+                        </li>
+                        <li class="table-item" data-table="Donation">
+                            <span class="table-name">Donation</span>
+                            <span class="badge badge-pk">7 cols</span>
+                        </li>
+                        <li class="table-item" data-table="ResourceRequest">
+                            <span class="table-name">ResourceRequest</span>
+                            <span class="badge badge-comp">5 cols</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Display Content Area -->
+        <section class="display-panel">
+            
+            <!-- TAB 1: DIAGRAMS (Default) -->
+            <div id="tab-diagrams" class="tab-content active">
+                <div class="view-controls">
+                    <div class="diagram-switcher">
+                        <button class="switch-btn active" id="btn-er"><i class="fa-solid fa-diagram-project"></i> Entity-Relationship (ER)</button>
+                        <button class="switch-btn" id="btn-relational"><i class="fa-solid fa-network-wired"></i> Relational Schema</button>
+                    </div>
+                    <div class="zoom-controls">
+                        <button class="control-btn" id="btn-zoom-in" title="Zoom In"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                        <button class="control-btn" id="btn-zoom-reset" title="Reset"><i class="fa-solid fa-arrows-to-eye"></i></button>
+                        <button class="control-btn" id="btn-zoom-out" title="Zoom Out"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                    </div>
+                </div>
+
+                <!-- Diagram Viewer Canvas -->
+                <div class="diagram-canvas">
+                    <!-- ER DIAGRAM MERMAID SOURCE -->
+                    <div id="er-diagram-container" class="mermaid-wrap active">
+                        <pre class="mermaid" id="er-mermaid">
+erDiagram
+    Location ||--o{ Disaster : "occurs at (OccursAt)"
+    Disaster ||--|{ Occurrence : "triggers (HasOccurrence)"
+    Disaster ||--o{ Warning : "broadcasts (Generates)"
+    Disaster ||--o{ ReliefCamp : "allocates (HasCamp)"
+    ReliefCamp ||--o{ Victim : "accommodates (Houses)"
+    RescueTeam ||--o{ Volunteer : "coordinates (HasVolunteer)"
+    
+    Disaster ||--o{ DisasterAction : "deploys (DisasterAction)"
+    RescueTeam ||--o{ DisasterAction : "undertakes (DisasterAction)"
+    
+    Disaster ||--o{ ResourceRequest : "demands (ResourceRequest)"
+    Resource ||--o{ ResourceRequest : "fulfills (ResourceRequest)"
+    
+    Disaster ||--o{ ImpactedBy : "records (ImpactedBy)"
+    Victim ||--o{ ImpactedBy : "experiences (ImpactedBy)"
+    ReliefCamp ||--o{ ImpactedBy : "hosts (ImpactedBy)"
+
+    Donor ||--o{ Donation : "makes (Makes)"
+    Donation ||--o{ Disaster : "targets (ForDisaster)"
+    Donation ||--o{ Resource : "supplies (DonatesResource)"
+
+    Location {
+        varchar Location_ID PK
+        varchar Name
+        varchar Division
+        varchar District
+    }
+    Disaster {
+        varchar Disaster_ID PK
+        varchar DisasterName
+        varchar DisasterType
+        date StartDate
+        date EndDate
+        varchar Location_ID FK
+    }
+    Occurrence {
+        varchar Occurrence_ID PK
+        varchar Disaster_ID FK
+        varchar OccurrenceType
+        varchar Level
+        timestamp ReportedTime
+        timestamp ResolvedTime
+    }
+    Warning {
+        varchar Warning_ID PK
+        varchar Disaster_ID FK
+        varchar WarningType
+        text Message
+        date WarningDate
+        time WarningTime
+    }
+    ReliefCamp {
+        varchar ReliefCamp_ID PK
+        varchar Disaster_ID FK
+        varchar Name
+        int Capacity
+        varchar Address
+        varchar ContactNumber
+    }
+    RescueTeam {
+        varchar Team_ID PK
+        varchar TeamName
+        varchar TeamLeader
+        varchar ContactNumber
+        text Equipments
+        varchar Specialization
+    }
+    DisasterAction {
+        varchar Disaster_ID PK, FK
+        varchar Team_ID PK, FK
+        varchar Task
+        date ResponseDate
+    }
+    Volunteer {
+        varchar Volunteer_ID PK
+        varchar Team_ID FK
+        varchar Name
+        int Age
+        varchar Gender
+        text Skills
+        varchar ContactNumber
+    }
+    Victim {
+        varchar Victim_ID PK
+        varchar ReliefCamp_ID FK
+        varchar Name
+        int Age
+        varchar Gender
+        varchar HealthStatus
+    }
+    ImpactedBy {
+        varchar Disaster_ID PK, FK
+        varchar Victim_ID PK, FK
+        varchar ReliefCamp_ID FK
+        varchar InjuryStatus
+        varchar ReliefType
+    }
+    Donor {
+        varchar Donor_ID PK
+        varchar Name
+        varchar Type
+        varchar ContactNumber
+        varchar Email
+    }
+    Resource {
+        varchar Resource_ID PK
+        varchar ResourceName
+        varchar ResourceType
+        int QuantityAvailable
+        varchar Unit
+        decimal UnitCost
+    }
+    Donation {
+        varchar Donation_ID PK
+        varchar Donor_ID FK
+        varchar Disaster_ID FK
+        varchar Resource_ID FK
+        varchar DonationType
+        decimal Amount
+        date DonationDate
+    }
+    ResourceRequest {
+        varchar Disaster_ID PK, FK
+        varchar Resource_ID PK, FK
+        int Quantity
+        date RequestDate
+        decimal TotalValue
+    }
+                        </pre>
+                    </div>
+
+                    <!-- RELATIONAL SCHEMA DIAGRAM MERMAID SOURCE -->
+                    <div id="relational-diagram-container" class="mermaid-wrap">
+                        <pre class="mermaid" id="relational-mermaid">
+erDiagram
+    Location ||--o{ Disaster : "FK: Location_ID"
+    Disaster ||--|{ Occurrence : "FK: Disaster_ID"
+    Disaster ||--o{ Warning : "FK: Disaster_ID"
+    Disaster ||--o{ ReliefCamp : "FK: Disaster_ID"
+    ReliefCamp ||--o{ Victim : "FK: ReliefCamp_ID"
+    RescueTeam ||--o{ Volunteer : "FK: Team_ID"
+    
+    Disaster ||--o{ DisasterAction : "FK: Disaster_ID"
+    RescueTeam ||--o{ DisasterAction : "FK: Team_ID"
+    
+    Disaster ||--o{ ResourceRequest : "FK: Disaster_ID"
+    Resource ||--o{ ResourceRequest : "FK: Resource_ID"
+    
+    Disaster ||--o{ ImpactedBy : "FK: Disaster_ID"
+    Victim ||--o{ ImpactedBy : "FK: Victim_ID"
+    ReliefCamp ||--o{ ImpactedBy : "FK: ReliefCamp_ID"
+
+    Donor ||--o{ Donation : "FK: Donor_ID"
+    Disaster ||--o{ Donation : "FK: Disaster_ID"
+    Resource ||--o{ Donation : "FK: Resource_ID"
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: DATA DICTIONARY -->
+            <div id="tab-dictionary" class="tab-content">
+                <div class="dictionary-grid">
+                    <!-- Left: Table Columns & Specifications -->
+                    <div class="dict-specs-card">
+                        <div class="card-header">
+                            <div class="table-meta">
+                                <span class="dict-group-badge" id="dict-table-group"><i class="fa-solid fa-tag"></i> Tracking</span>
+                                <h3 id="dict-table-title">Select a Table</h3>
+                            </div>
+                            <button class="sql-copy-btn" id="btn-copy-table-sql"><i class="fa-solid fa-copy"></i> Copy CREATE SQL</button>
+                        </div>
+                        
+                        <!-- Columns Metadata Table -->
+                        <div class="table-wrapper">
+                            <table class="data-table" id="metadata-table">
+                                <thead>
+                                    <tr>
+                                        <th>Column</th>
+                                        <th>Data Type</th>
+                                        <th>Key</th>
+                                        <th>Constraints / Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="metadata-table-body">
+                                    <tr>
+                                        <td colspan="4" class="empty-state">Select a table from the sidebar to inspect its architecture.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Right: Quick CREATE TABLE SQL code block -->
+                    <div class="dict-code-card">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-terminal"></i> Table DDL</span>
+                            <span class="code-lang">SQL</span>
+                        </div>
+                        <pre class="code-block"><code id="table-ddl-code">-- Select a table to view code</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: FULL SQL SCRIPT -->
+            <div id="tab-sql" class="tab-content">
+                <div class="sql-script-card">
+                    <div class="sql-card-header">
+                        <div class="title-wrap">
+                            <h3>schema.sql</h3>
+                            <span>Complete Database Schema DDL</span>
+                        </div>
+                        <button class="copy-full-sql-btn" id="btn-copy-full-sql"><i class="fa-solid fa-copy"></i> Copy Full Script</button>
+                    </div>
+                    <pre class="full-sql-block"><code id="full-sql-code">-- SQL code will be loaded here</code></pre>
+                </div>
+            </div>
+            
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <p>Disaster Relief Management System (DRMS) • Designed with <i class="fa-solid fa-heart text-danger"></i> for GitHub Portfolio</p>
+    </footer>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
