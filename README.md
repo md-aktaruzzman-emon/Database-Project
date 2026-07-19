@@ -218,7 +218,7 @@ erDiagram
 ### 2. Relational Schema Diagram
 This programmatically generated physical schema diagram highlights structural keys, attribute groupings, and check constraints mapping the database constraints:
 
-![Relational Schema Diagram](assets/images/schema_diagram.png)
+![Relational Schema Diagram](images/schema_diagram.png)
 
 #### Schema Architecture Breakdown
 The programmatically generated diagram maps the physical implementation details of the DRMS database:
