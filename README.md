@@ -9,7 +9,7 @@ An Enterprise Relational Database for Crisis Coordination, Rescue Operations, an
 
 ---
 
-![DRMS Banner](assets/images/github_banner_light_.png)
+![DRMS Banner](images/github_banner_light_.png)
 
 ---
 
