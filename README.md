@@ -1,313 +1,433 @@
-<p align="center">
-  <img src="Banner.png" alt="Disaster Relief Resource Management System Banner" width="100%">
+# Disaster Relief Resource Management System (DRMS)
 
+An Enterprise Relational Database for Crisis Coordination, Rescue Operations, and Resource Logistics
 
-
-</p>
-
-# Disaster Relief Resource Management System
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Database-Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white" alt="Microsoft SQL Server Badge">
-  <img src="https://img.shields.io/badge/Language-SQL-0078D4?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQL Language Badge">
-  <img src="https://img.shields.io/badge/Domain-Emergency%20Response-red?style=for-the-badge" alt="Emergency Response Domain Badge">
-  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License Badge">
-</p>
+[![Database](https://img.shields.io/badge/Database-SQL%20Server-1e3a5f?style=for-the-badge&logo=microsoft-sql-server)](https://github.com)
+[![License](https://img.shields.io/badge/License-MIT-10b981?style=for-the-badge)](https://github.com)
+[![Status](https://img.shields.io/badge/Status-Production--Ready-06b6d4?style=for-the-badge)](https://github.com)
+[![Dashboard](https://img.shields.io/badge/Dashboard-Interactive%20Showcase-0ea5e9?style=for-the-badge&logo=html5)](https://github.com)
 
 ---
 
-## 📖 About the Project
-
-The **Disaster Relief Resource Management System** is an enterprise-grade relational database design developed to coordinate and optimize disaster response operations. From large-scale natural disasters (such as floods, cyclones, and earthquakes) to localized emergencies, this system acts as a centralized operational database. 
-
-It manages the complete lifecycle of emergency relief, including real-time disaster tracking, relief camp logistics, victim medical records, rescue team deployment, volunteer coordination, donor contributions, and critical resource allocations.
+![DRMS Banner](assets/images/github_banner.png)
 
 ---
 
-## ⚠️ Problem Statement
-
-Modern disaster management operations suffer from fragmented coordination and data silos. During an emergency:
-* **Resource Mismatches:** Critical supplies (medical kits, blankets, water) are often sent to camps that do not need them, while other camps face severe shortages.
-* **Coordination Delays:** First responders and volunteer teams are deployed without real-time tracking of their specialization or current assignments.
-* **Lack of Transparency:** Donations are difficult to trace to specific relief efforts, reducing donor trust.
-* **Communication Bottlenecks:** Warning dissemination lacks structure, failing to associate alerts directly with active occurrences.
-
-Implementing a structured, relational database system solves these challenges by providing a single source of truth, enforcing data integrity constraints, and generating real-time analytics to guide emergency decision-makers.
-
----
-
-## 🎯 Objectives
-
-* **Optimize Resource Distribution:** Track inventory levels and calculate request values to prevent supply chain bottlenecks.
-* **Coordinate Personnel:** Map volunteers to specialized rescue teams (e.g., flood rescue, medical support) and assign them to specific disaster zones.
-* **Ensure Operational Transparency:** Maintain audit trails for financial and material donations from NGOs, corporations, and individual donors.
-* **Track Victim Well-being:** Record the location, health status, injury details, and shelter occupancy of affected citizens.
-* **Establish Early Warning Pipelines:** Connect natural disaster occurrences with targeted warnings and rapid-response actions.
+## 📖 Table of Contents
+1. [Overview & Problem Statement](#-overview--problem-statement)
+2. [Database Architecture & Design](#-database-architecture--design)
+3. [Interactive Visualizations](#-interactive-visualizations)
+4. [Database Schema Dictionary](#-database-schema-dictionary)
+5. [SQL Features Demonstrated](#-sql-features-demonstrated)
+6. [Advanced Database Objects](#-advanced-database-objects)
+7. [Operational & Analytic Queries](#-operational--analytic-queries)
+8. [Setup & Installation Guide](#-setup--installation-guide)
+9. [Repository Structure](#-repository-structure)
+10. [Future Scope](#-future-scope)
+11. [License](#-license)
 
 ---
 
-## 🛠️ System Features
+## 📋 Overview & Problem Statement
 
-| Feature Area | Technical Description | Operational Impact |
-| :--- | :--- | :--- |
-| **Disaster Tracking** | Records start/end dates, location indices, and types of active disasters. | Provides situational awareness and chronological disaster logs. |
-| **Resource Logistics** | Tracks available quantities, unit measurements, and cost metrics of critical goods. | Prevents resource hoarding and shortages in camp networks. |
-| **Relief Camp Management** | Monitors shelter capacity, occupancy rates, and geographical addresses. | Identifies over-capacity shelters and guides new evacuations. |
-| **Victim Registry** | Stores demographic profiles, injury status, and camp assignments. | Enables family reunifications and targeted relief delivery. |
-| **Emergency Response** | Manages rescue team allocations, specialized equipment, and volunteer skills. | Streamlines first-responder deployments and task dispatching. |
-| **Donation Auditing** | Links financial/resource donations directly to donors and specific disasters. | Restores public and corporate trust through verifiable allocation logs. |
-| **Warning Pipeline** | Disseminates message payloads linked to disaster severity levels. | Drives early evacuations and reduces casualties. |
+### The Challenge
+During natural and man-made disasters (such as floods, cyclones, earthquakes, and fires), relief activities are often severely hindered by fragmented operations, manual record-keeping, and logistics bottlenecks. Information regarding affected zones, rescue team deployments, camp capacities, donor contributions, and victim medical statuses remains siloed. This lack of centralized data delays decision-making, leads to resource shortages, and reduces the efficiency of victim coordination.
 
----
-
-## 🏗️ Project Architecture
-
-The database design follows a rigorous conceptual-to-physical implementation pipeline. 
-
-### 1. Entity Relationship (ER) Diagram
-The Entity Relationship (ER) Diagram illustrates the conceptual design of the Disaster Relief Resource Management System, showing how entities interact to support emergency response operations. It maps the complex relationships between victims, locations, resources, and coordinators.
-
-<p align="center">
-  <img src="images/ER-Diagram.png" alt="Entity Relationship Diagram" width="100%">
-</p>
-
-### 2. Database Schema
-The Schema Diagram represents the physical implementation of the database, illustrating table structures, primary keys, foreign keys, and relational dependencies. It demonstrates 3NF-compliant design aimed at minimizing redundancy while maintaining referential integrity.
-
-<p align="center">
-  <img src="images/Schema-Diagram.png" alt="Database Schema" width="100%">
-</p>
-
-> [!TIP]
-> **Diagram Styling & Aesthetics:** The diagrams are styled with rounded tables (8px radius), modern typography (Segoe UI), a premium corporate palette (Deep Navy `#1E3A5F`, Slate Blue `#334155`, and Soft Gray borders), and clean orthogonal elbow connectors to ensure maximum readability and professional presentation.
+### The Solution (DRMS)
+The **Disaster Relief Resource Management System (DRMS)** is an enterprise-grade database system designed to centralize and organize all aspects of disaster management. It establishes reliable relational mappings across four operational pillars:
+* **Disasters & Locations:** Connects warning bulletins and occurrence events to administrative spatial zones.
+* **Rescue Teams & Operations:** Manages deployment assignments, task tracking, and civilian volunteer coordination.
+* **Relief Camps & Victims:** Tracks shelter bed capacities, registers affected citizens, and records injury details.
+* **Logistics & Donations:** Tracks inventory levels, manages camp logistics requests, and monitors donor contributions.
 
 ---
 
-## 🗄️ Database Entities & Schema Registry
+## 🏛️ Database Architecture & Design
 
-The database is built on 14 highly normalized tables. Below is the data registry detailing the keys and roles of each entity:
+The database is built on a highly normalized relational model containing **14 tables** grouped into 4 functional modules:
 
-| Table Name | Primary Key | Foreign Keys | Description |
+```mermaid
+mindmap
+  root((DRMS Database))
+    Disaster Tracking
+      Location
+      Disaster
+      Occurrence
+      Warning
+    Rescue & Operations
+      RescueTeam
+      Volunteer
+      DisasterAction
+    Relief & Shelter
+      ReliefCamp
+      Victim
+      ImpactedBy
+    Logistics & Finance
+      Resource
+      ResourceRequest
+      Donor
+      Donation
+```
+
+### Module Descriptions
+1. **Disaster Tracking:** Records geographical locations, active disaster events, warnings issued to populations, and sequential occurrence checkpoints.
+2. **Rescue & Operations:** Deploys rescue squads on specific tasks and manages civilian volunteers assigned to those teams.
+3. **Relief & Shelter:** Manages shelter locations, victims housed within them, and detailed health status tracking linked to active disasters.
+4. **Logistics & Finance:** Logs resource inventory, tracks camp material requests, and manages donor details along with cash and material contributions.
+
+---
+
+## 🗺️ Interactive Visualizations
+
+### 1. Entity-Relationship (ER) Diagram
+This conceptual diagram illustrates the entities, their operational attributes, and the relational cardinalities (1:N, M:N) governing the business rules.
+
+```mermaid
+erDiagram
+    Location ||--o{ Disaster : "occurs at (OccursAt)"
+    Disaster ||--|{ Occurrence : "triggers (HasOccurrence)"
+    Disaster ||--o{ Warning : "broadcasts (Generates)"
+    Disaster ||--o{ ReliefCamp : "allocates (HasCamp)"
+    ReliefCamp ||--o{ Victim : "accommodates (Houses)"
+    RescueTeam ||--o{ Volunteer : "coordinates (HasVolunteer)"
+    
+    %% Junction/Association Entities
+    Disaster ||--o{ DisasterAction : "deploys (DisasterAction)"
+    RescueTeam ||--o{ DisasterAction : "undertakes (DisasterAction)"
+    
+    Disaster ||--o{ ResourceRequest : "demands (ResourceRequest)"
+    Resource ||--o{ ResourceRequest : "fulfills (ResourceRequest)"
+    
+    Disaster ||--o{ ImpactedBy : "records (ImpactedBy)"
+    Victim ||--o{ ImpactedBy : "experiences (ImpactedBy)"
+    ReliefCamp ||--o{ ImpactedBy : "hosts (ImpactedBy)"
+
+    Donor ||--o{ Donation : "makes (Makes)"
+    Donation ||--o{ Disaster : "targets (ForDisaster)"
+    Donation ||--o{ Resource : "supplies (DonatesResource)"
+
+    Location {
+        varchar Location_ID PK
+        varchar Name
+        varchar Division
+        varchar District
+    }
+    Disaster {
+        varchar Disaster_ID PK
+        varchar DisasterName
+        varchar DisasterType
+        date StartDate
+        date EndDate
+        varchar Location_ID FK
+    }
+    Occurrence {
+        varchar Occurrence_ID PK
+        varchar Disaster_ID FK
+        varchar OccurrenceType
+        varchar Level
+        timestamp ReportedTime
+        timestamp ResolvedTime
+    }
+    Warning {
+        varchar Warning_ID PK
+        varchar Disaster_ID FK
+        varchar WarningType
+        text Message
+        date WarningDate
+        time WarningTime
+    }
+    ReliefCamp {
+        varchar ReliefCamp_ID PK
+        varchar Disaster_ID FK
+        varchar Name
+        int Capacity
+        varchar Address
+        varchar ContactNumber
+    }
+    RescueTeam {
+        varchar Team_ID PK
+        varchar TeamName
+        varchar TeamLeader
+        varchar ContactNumber
+        text Equipments
+        varchar Specialization
+    }
+    DisasterAction {
+        varchar Disaster_ID PK, FK
+        varchar Team_ID PK, FK
+        varchar Task
+        date ResponseDate
+    }
+    Volunteer {
+        varchar Volunteer_ID PK
+        varchar Team_ID FK
+        varchar Name
+        int Age
+        varchar Gender
+        text Skills
+        varchar ContactNumber
+    }
+    Victim {
+        varchar Victim_ID PK
+        varchar ReliefCamp_ID FK
+        varchar Name
+        int Age
+        varchar Gender
+        varchar HealthStatus
+    }
+    ImpactedBy {
+        varchar Disaster_ID PK, FK
+        varchar Victim_ID PK, FK
+        varchar ReliefCamp_ID FK
+        varchar InjuryStatus
+        varchar ReliefType
+    }
+    Donor {
+        varchar Donor_ID PK
+        varchar Name
+        varchar Type
+        varchar ContactNumber
+        varchar Email
+    }
+    Resource {
+        varchar Resource_ID PK
+        varchar ResourceName
+        varchar ResourceType
+        int QuantityAvailable
+        varchar Unit
+        decimal UnitCost
+    }
+    Donation {
+        varchar Donation_ID PK
+        varchar Donor_ID FK
+        varchar Disaster_ID FK
+        varchar Resource_ID FK
+        varchar DonationType
+        decimal Amount
+        date DonationDate
+    }
+    ResourceRequest {
+        varchar Disaster_ID PK, FK
+        varchar Resource_ID PK, FK
+        int Quantity
+        date RequestDate
+        decimal TotalValue
+    }
+```
+
+### 2. Relational Schema Diagram
+This programmatically generated physical schema diagram highlights structural keys, attribute groupings, and check constraints mapping the database constraints:
+
+![Relational Schema Diagram](assets/images/schema_diagram.png)
+
+#### Schema Architecture Breakdown
+The programmatically generated diagram maps the physical implementation details of the DRMS database:
+* **Structural Groupings (Columns):**
+  * **Disaster Management:** Tracks geographical locations, warning bulletins, occurrence timelines, and active disaster events.
+  * **Rescue Operations & Team Coordination:** Coordinates rescue squad resources, volunteer deployments, and action items.
+  * **Relief Operations & Victim Support:** Manages temporary relief shelters, bed capacities, victim check-ins, and active injury logs.
+  * **Resource Tracking & Donation Management:** Controls warehouse inventory levels, donor information, funding logs, and camp logistics demands.
+* **Key Indicators:**
+  * **Primary Keys (PK):** Highlighted in blue (`#2563EB`) representing unique entity identifiers.
+  * **Foreign Keys (FK):** Highlighted in emerald (`#10B981`) representing relationships between tables.
+  * **Composite Keys (PFK):** Highlighted in cyan (`#06B6D4`) representing combined primary keys in junction tables.
+  * **Required Fields (`*`):** Highlighted in sky blue (`#0EA5E9`) representing mandatory non-null values.
+* **Relational Connectors:** Slate Gray (`#64748B`) orthogonal lines with dots and arrows representing the direction of table relationships, enforcing database reference integrity.
+
+---
+
+## 🗃️ Database Schema Dictionary
+
+The system layout is structured as follows:
+
+| Table Name | Primary Key | Foreign Keys | Purpose |
 | :--- | :--- | :--- | :--- |
-| **`Location`** | `Location_ID` | None | Stores geographical coordinates (Division, District, Name). |
-| **`Disaster`** | `Disaster_ID` | `Location_ID` | Records the profile, dates, and region of a disaster event. |
-| **`Resource`** | `Resource_ID` | None | Inventory of relief materials (Food, Water, Medical kits, Tents). |
-| **`ResourceRequest`** | `(Disaster_ID, Resource_ID)` | `Disaster_ID`, `Resource_ID` | Tracks material requests, quantities, and calculated costs. |
-| **`Donor`** | `Donor_ID` | None | Profile of supporting entities (NGOs, Corporates, Individuals). |
-| **`Donation`** | `Donation_ID` | `Donor_ID`, `Disaster_ID`, `Resource_ID` | Records cash or material donations linked to specific relief campaigns. |
-| **`RescueTeam`** | `Team_ID` | None | Emergency units containing contact data and equipment listings. |
-| **`Volunteer`** | `Volunteer_ID` | `Team_ID` | Demographics and special skills of volunteers assigned to teams. |
-| **`DisasterAction`** | `(Disaster_ID, Team_ID)` | `Disaster_ID`, `Team_ID` | Tracks response actions, tasks, and team response dates. |
-| **`ReliefCamp`** | `ReliefCampID` | `DisasterID` | Shelters opened to support victims of specific disasters. |
-| **`Victim`** | `Victim_ID` | `ReliefCamp_ID` | Stores personal profiles and general health statuses of victims. |
-| **`ImpactedBy`** | `(Disaster_ID, Victim_ID, ReliefCamp_ID)` | `Disaster_ID`, `Victim_ID`, `ReliefCamp_ID` | Records specific injuries and relief types provided to victims. |
-| **`Warning`** | `Warning_ID` | `Disaster_ID` | Stores early warnings, timestamps, and message payloads. |
-| **`Occurrence`** | `Occurrence_ID` | `Disaster_ID` | Tracks meteorological or localized disaster occurrences. |
+| **Location** | `Location_ID` | None | Stores geographical coordinates and administrative districts for dispatch. |
+| **Disaster** | `Disaster_ID` | `Location_ID` | Serves as the central registry tracking start, end, and region of a crisis. |
+| **Occurrence** | `Occurrence_ID` | `Disaster_ID` | Records sequential checkpoint events, intensity levels, and timeline updates. |
+| **Warning** | `Warning_ID` | `Disaster_ID` | Tracks public alerts and bulletin emergency warnings broadcasted during a crisis. |
+| **RescueTeam** | `Team_ID` | None | Manages search and rescue squads, squad leaders, and specialized equipment. |
+| **Volunteer** | `Volunteer_ID` | `Team_ID` | Registers volunteers, tracking their ages, skills, and emergency squad assignments. |
+| **DisasterAction** | `(Disaster_ID, Team_ID)` | `Disaster_ID`, `Team_ID` | Bridges rescue squads and disaster zones to register deployment tasks. |
+| **ReliefCamp** | `ReliefCamp_ID` | `Disaster_ID` | Manages temporary relief shelters, bed capacities, addresses, and hotlines. |
+| **Victim** | `Victim_ID` | `ReliefCamp_ID` | Registers displaced citizens, tracking ages, genders, and active health states. |
+| **ImpactedBy** | `(Disaster_ID, Victim_ID)` | `Disaster_ID`, `Victim_ID`, `ReliefCamp_ID` | Logs medical statuses and specific relief requests (food, shelter, trauma care). |
+| **Resource** | `Resource_ID` | None | Manages available logistics stock (water, food, medicine) and unit costs. |
+| **ResourceRequest** | `(Disaster_ID, Resource_ID)` | `Disaster_ID`, `Resource_ID` | Records inventory logistics requests placed by camps during active disasters. |
+| **Donor** | `Donor_ID` | None | Registers NGO, corporate, and individual sponsors. |
+| **Donation** | `Donation_ID` | `Donor_ID`, `Disaster_ID`, `Resource_ID` | Tracks material and financial donation logs tied to specific disasters. |
 
 ---
 
-## ⚡ SQL Core Features & Implementations
+## 💾 SQL Features Demonstrated
 
-This project implements advanced SQL features to ensure fast execution and data consistency.
+The DRMS project covers the following SQL paradigms:
 
-### 1. Database Objects
-* **Tables & Constraints:** Formed using primary keys, identity columns, and foreign keys with cascading options to enforce referential integrity.
-* **Views:** Encapsulates complex JOIN operations to expose simplified, read-only representations of operational data.
-* **Triggers:** Automated event listeners running post DML operations (`INSERT`, `UPDATE`) to enforce temporal constraints and integrity rules.
-* **Stored Procedures:** Parametric routines to fetch customized transaction reports while shielding underlying tables.
+* **DDL (Data Definition Language):** `CREATE DATABASE`, `CREATE TABLE`, primary key declarations, composite keys, check constraints (date check validations, age parameters, capacity checks), defaults, and cascades (`ON DELETE CASCADE`, `ON DELETE SET NULL`, `ON UPDATE CASCADE`).
+* **DML (Data Manipulation Language):** Structured data queries utilizing sequential `INSERT` scripts, record updates, and table resets.
+* **DQL (Data Query Language):** Multi-table queries, conditional filters (`WHERE`, `HAVING`), ordering, groupings (`GROUP BY`), and logical operations (`EXISTS`, `UNION`).
+* **Relational Joins:** Custom inner joins, left outer joins, and multi-join structures mapping active inventory deficits.
+* **Advanced Encapsulation:** Implementation of Views, Triggers, and Stored Procedures to modularize reporting and enforce data integrity.
 
-### 2. DDL & DML Operations Included
-* **Advanced Joins:** `INNER JOIN` operations to compile multi-table datasets (e.g., matching disasters with locations).
-* **Aggregation & Grouping:** Usage of `SUM`, `AVG`, `COUNT`, `MIN`, `MAX` alongside `GROUP BY` and `HAVING` clauses for resource auditing.
-* **Correlated Subqueries & Exists:** Optimizes checking routines (e.g., verifying if a disaster has open camps).
-* **Set Operations:** `UNION` queries to merge datasets (e.g., volunteer lists with individual donor lists).
+The complete schema file containing table declarations and constraint checks is located at [sql/schema.sql](file:///c:/Users/Md%20Aktaruzzman%20Emon/antigravity11_IDE/dfddfa/sql/schema.sql).
 
 ---
 
 ## ⚙️ Advanced Database Objects
 
-### View: Disaster Location Details
+To optimize queries, protect transactional workflows, and simplify reporting, the database layout can be extended with views, triggers, and stored procedures.
+
+### 1. Database Views
+A View abstracts complex multi-table joins and calculations into a simple virtual table. This provides clean endpoints for dashboard developers and database managers to monitor camp statuses without writing long scripts.
+
+#### View: `vw_ActiveCampLogistics`
+Summarizes active shelter capacities and coordinates resource needs:
 ```sql
-CREATE VIEW Disaster_Location_Details_View AS
+CREATE VIEW vw_ActiveCampLogistics AS
 SELECT 
-    D.DisasterName,
-    D.DisasterType,
-    D.StartDate,
-    D.EndDate,
-    L.Name AS Location_Name,
-    L.Division,
-    L.District
-FROM Disaster D
-JOIN Location L
-ON D.Location_ID = L.Location_ID;
+    rc.ReliefCamp_ID,
+    rc.Name AS CampName,
+    d.DisasterName,
+    rc.Capacity AS MaxCapacity,
+    COUNT(v.Victim_ID) AS CurrentOccupants,
+    (rc.Capacity - COUNT(v.Victim_ID)) AS AvailableBeds
+FROM ReliefCamp rc
+JOIN Disaster d ON rc.Disaster_ID = d.Disaster_ID
+LEFT JOIN Victim v ON rc.ReliefCamp_ID = v.ReliefCamp_ID
+GROUP BY rc.ReliefCamp_ID, rc.Name, d.DisasterName, rc.Capacity;
 ```
-* **Use Case:** Exposes disaster profiles coupled with division and district information, preventing developers from manually writing multi-table joins.
 
-### Trigger: Temporal Consistency Enforcement
-```sql
-CREATE TRIGGER Prevent_Invalid_Disaster_Date_Trigger
-ON Disaster
-AFTER INSERT, UPDATE
-AS
-BEGIN
-    IF EXISTS (
-        SELECT *
-        FROM inserted
-        WHERE EndDate < StartDate
-    )
-    BEGIN
-        RAISERROR ('End date cannot be earlier than start date.', 16, 1);
-        ROLLBACK TRANSACTION;
-    END
-END;
-```
-* **Use Case:** Enforces business logic by rolling back insertions or updates where a disaster's end date precedes its start date.
+### 2. Database Triggers
+Triggers run automatically in response to database changes, helping maintain data integrity across tables without manual checks.
 
-### Stored Procedure: Resource Requirement Retrieval
+#### Trigger: `trg_UpdateResourceQuantity`
+Increments resource stock levels when material donations are added to the donation logs:
 ```sql
-CREATE PROCEDURE GetDisasterResources
-    @Disaster_ID INT
+CREATE TRIGGER trg_UpdateResourceQuantity
+ON Donation
+AFTER INSERT
 AS
 BEGIN
     SET NOCOUNT ON;
-    SELECT 
-        D.DisasterName,
-        R.ResourceName,
-        RR.Quantity,
-        R.Unit,
-        R.UnitCost,
-        RR.TotalValue
-    FROM ResourceRequest RR
-    JOIN Disaster D ON RR.Disaster_ID = D.Disaster_ID
-    JOIN Resource R ON RR.Resource_ID = R.Resource_ID
-    WHERE RR.Disaster_ID = @Disaster_ID;
+    UPDATE Resource
+    SET QuantityAvailable = QuantityAvailable + i.Amount -- treats Amount as quantity for material drops
+    FROM Resource r
+    JOIN inserted i ON r.Resource_ID = i.Resource_ID
+    WHERE i.DonationType = 'Material';
 END;
 ```
-* **Use Case:** Executed as `EXEC GetDisasterResources 1;` to generate resource lists and costs for a given disaster event.
 
----
+### 3. Stored Procedures
+Stored Procedures speed up query times by pre-compiling code and protecting the database. They make it safe to execute common tasks like deploying rescue teams.
 
-## 📊 Sample Use Cases & Scenarios
-
-### Scenario A: Disaster Impact Reporting
-* **Objective:** Find the location, duration, and type of all flood disasters.
-* **Implementation:** Exposes spatial correlations to determine vulnerable sectors.
+#### Stored Procedure: `sp_DeployRescueTeam`
+Registers rescue squads and their assignments:
 ```sql
-SELECT DisasterName, StartDate, EndDate, Location_ID
-FROM Disaster
-WHERE DisasterType = 'Flood';
+CREATE PROCEDURE sp_DeployRescueTeam
+    @Disaster_ID VARCHAR(50),
+    @Team_ID VARCHAR(50),
+    @Task VARCHAR(255),
+    @ResponseDate DATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+    INSERT INTO DisasterAction (Disaster_ID, Team_ID, Task, ResponseDate)
+    VALUES (@Disaster_ID, @Team_ID, @Task, @ResponseDate);
+END;
 ```
 
-### Scenario B: Volunteer Allocation
-* **Objective:** Filter rescue team volunteers with swimming capabilities to assign them to water rescue units.
-* **Implementation:** Using wildcard string pattern matching.
+---
+
+## 📊 Operational & Analytic Queries
+
+The following queries showcase relational analysis capabilities:
+
+### 1. Active Resource Logistics Deficit Analysis
+Identifies resource shortages by comparing disaster requests against current warehouse inventory levels:
 ```sql
-SELECT Volunteer_ID, Name, Skills
-FROM Volunteer
-WHERE Skills LIKE '%Swimming%';
+SELECT 
+    d.DisasterName,
+    r.ResourceName,
+    rr.Quantity AS RequestedQuantity,
+    r.QuantityAvailable AS WarehouseStock,
+    CASE 
+        WHEN r.QuantityAvailable >= rr.Quantity THEN 'Stock Sufficient'
+        ELSE 'ALERT: DEFICIT'
+    END AS StockStatus,
+    (rr.Quantity - r.QuantityAvailable) AS DeficitAmount
+FROM ResourceRequest rr
+JOIN Disaster d ON rr.Disaster_ID = d.Disaster_ID
+JOIN Resource r ON rr.Resource_ID = r.Resource_ID
+WHERE d.EndDate IS NULL OR d.EndDate >= '2024-01-01';
 ```
 
-### Scenario C: Donation Analysis
-* **Objective:** Merge donor and volunteer names into a unified list to send automated thank-you newsletters.
-* **Implementation:** Combines records using `UNION` and sorts them alphabetically.
+### 2. Volunteer Squad Allocations & Contact Sheets
+Creates emergency team rosters by listing all volunteers, their specializations, and their current disaster deployment tasks:
 ```sql
-SELECT Name AS PersonName FROM Donor
-UNION
-SELECT Name AS PersonName FROM Volunteer
-ORDER BY PersonName;
+SELECT 
+    rt.TeamName,
+    rt.Specialization,
+    v.Name AS VolunteerName,
+    v.Skills,
+    v.ContactNumber,
+    da.Task AS CurrentAssignment
+FROM Volunteer v
+JOIN RescueTeam rt ON v.Team_ID = rt.Team_ID
+JOIN DisasterAction da ON rt.Team_ID = da.Team_ID
+ORDER BY rt.TeamName;
 ```
 
 ---
 
-## 🛠️ Technologies Used
+## 🛠️ Setup & Installation Guide
 
-<table border="0">
-  <tr>
-    <td><b>Database Engine</b></td>
-    <td>Microsoft SQL Server (v16.x / 2022)</td>
-  </tr>
-  <tr>
-    <td><b>Query Language</b></td>
-    <td>T-SQL (Transact-SQL)</td>
-  </tr>
-  <tr>
-    <td><b>Methodology</b></td>
-    <td>3NF Normalization, ER Modeling, Relational Algebra</td>
-  </tr>
-  <tr>
-    <td><b>Documentation</b></td>
-    <td>Markdown, GitHub Flavored Markdown (GFM)</td>
-  </tr>
-</table>
+### Prerequisite Environment
+* SQL Server (MSSQL), PostgreSQL, or MySQL Database Engine.
+* Database management client (e.g., DBeaver, SSMS, PgAdmin).
+
+### Deployment Steps
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/your-username/drms-database.git
+   cd drms-database
+   ```
+2. **Execute Database DDL:**
+   Open [sql/schema.sql](file:///c:/Users/Md%20Aktaruzzman Emon/antigravity11_IDE/dfddfa/sql/schema.sql) in your database client and run the script to create the database, tables, and foreign keys.
+3. **Insert Seed Data:**
+   Run [sql/seed_data.sql](file:///c:/Users/Md%20Aktaruzzman Emon/antigravity11_IDE/dfddfa/sql/seed_data.sql) to populate the schema with sample disaster, victim, and resource records.
+4. **Launch Interactive Dashboard:**
+   Open `src/index.html` directly in any web browser to view, search, and copy definitions using the custom showcase dashboard.
 
 ---
 
-## 🏆 Project Highlights
-
-* **3NF Database Design:** Designed to reduce insertion, update, and deletion anomalies.
-* **Data Integrity:** Strict usage of foreign key references, primary key combinations, and data validation triggers.
-* **Optimized Query Structuring:** Avoids performance bottlenecks through efficient joining strategies and filter indices.
-* **Real-World Modeling:** Emulates authentic emergency situations using historical data records representing Bangladesh's regional layout.
-
----
-
-## 🎓 Complex Engineering Problem (CEP) Mapping
-
-This project serves as a **Complex Engineering Problem (CEP)**, satisfying global accreditation metrics across Knowledge (K), Process (P), and Attitude (A) domains:
-
-### 🧠 Knowledge (K) Attributes
-* **K3 (Apply Knowledge):** Implements advanced relational database operations (e.g., set theory via `UNION`, conditional logic with `EXISTS`, aggregation using `GROUP BY / HAVING`) to retrieve operational intelligence.
-* **K5 (Design Knowledge):** Employs ER and physical schema modeling, mapping many-to-many associations (e.g., `ResourceRequest`, `DisasterAction`) using composite keys to satisfy complex logical integrity.
-
-### ⚙️ Process (P) Attributes
-* **P1 (Problem Analysis):** Deconstructs the chaotic parameters of disaster relief (supply chains, shelter capacities, medical records) into logical entities, resolving dependencies through normal forms.
-* **P3 (Design/Development of Solutions):** Codes a multi-tiered schema in MS SQL Server, enforcing business constraints dynamically via procedures and transactional rollbacks.
-* **P7 (Communication):** Outlines complex entity relationships, dependency graphs, and schema definitions in developer-focused repository documentation.
-
-### 🤝 Attitude (A) Attributes
-* **A1 (Professional Attitude):** Enforces data privacy and strict validation controls. Maintains data structure security protecting sensitive citizen health profiles.
-* **A5 (Teamwork & Leadership):** Facilitates collective code review and collaborative task allocation. Establishes modular SQL scripts matching git-flow practices.
-
----
-
-## 🚀 Future Improvements
-
-- [ ] **Authentication & Access Controls:** Role-Based Access Control (RBAC) separating camp managers, donors, and rescue commanders.
-- [ ] **GIS / Map Integration:** Spatial mappings mapping disasters to live GPS coordinates.
-- [ ] **AI-Powered Supply Chain:** Prediction models determining camp resource needs using weather forecasts.
-- [ ] **Real-time SMS Alert System:** SMS pipeline trigger linked to database occurrences.
-- [ ] **Web Portal:** Interactive admin dashboard developed in React/Next.js.
-
----
-
-## 📂 Repository Structure
+## 📁 Repository Structure
 
 ```
-Disaster-Relief-Resource-Management-System
-│
-├── Database/
-│   ├── Schema.sql             # Table definitions & integrity constraints
-│   ├── InsertData.sql         # Seed data for testing and validation
-│   ├── Queries.sql            # Core operational queries & reports
-│   ├── Views.sql              # SQL view definitions
-│   ├── Triggers.sql           # Database triggers for business rules
-│   └── StoredProcedures.sql   # Parametric stored procedures
-│
-├── images/
-│   ├── ER-Diagram.png         # Conceptual Entity Relationship Diagram
-│   ├── Schema-Diagram.png     # Physical Database Schema Diagram
-│   └── Banner.png             # Repository header banner
-│
-├── .gitignore                 # Excludes backup files and local settings
-├── LICENSE                    # MIT License open source agreement
-└── README.md                  # Comprehensive developer documentation
+├── assets/
+│   └── images/
+│       ├── github_banner.png          # Corporate repository banner
+│       └── schema_diagram.png         # Programmatic relational schema diagram
+├── sql/
+│   ├── schema.sql                     # Complete Database DDL script
+│   └── seed_data.sql                  # Seed data insertion script
+├── src/
+│   ├── index.html                     # Showcase Dashboard HTML entry point
+│   ├── style.css                      # Corporate Light design variables & CSS
+│   └── script.js                      # Table selector, searching, and Mermaid configurations
+├── generate_diagram.py                # Redesigned Python PIL diagram renderer
+└── README.md                          # Repository documentation
 ```
 
 ---
 
-## 👥 Contributors (Project Group)
+## 🚀 Future Scope
+Potential improvements for the system include:
+* **GIS Mapping Integration:** Plotting relief camps and disaster zones on interactive maps.
+* **Real-time Notifications:** Sending automatic SMS alerts to rescue teams when warnings are generated.
+* **User Access Control:** Defining separate permissions for emergency managers, donors, and shelter staff.
+* **AI Resource Forecasting:** Analyzing historical data to predict resource demands during future emergency events.
 
-This database project was designed and developed by:
-Md Emon
+---
 
-*Database Systems Lab Coursework - Computer Science and Engineering.*
+## 📄 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
