@@ -388,13 +388,13 @@ ORDER BY rt.TeamName;
 ### Deployment Steps
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/drms-database.git
+   git clone https://github.com/md-aktaruzzman-emon/drms-database.git
    cd drms-database
    ```
 2. **Execute Database DDL:**
-   Open [sql/schema.sql](file:///c:/Users/Md%20Aktaruzzman Emon/antigravity11_IDE/dfddfa/sql/schema.sql) in your database client and run the script to create the database, tables, and foreign keys.
+   Open [sql/schema.sql](file:///c:/Users/Md%20Aktaruzzman Emon/sql/schema.sql) in your database client and run the script to create the database, tables, and foreign keys.
 3. **Insert Seed Data:**
-   Run [sql/seed_data.sql](file:///c:/Users/Md%20Aktaruzzman Emon/antigravity11_IDE/dfddfa/sql/seed_data.sql) to populate the schema with sample disaster, victim, and resource records.
+   Run [sql/seed_data.sql](file:///c:/Users/Md%20Aktaruzzman Emon/sql/seed_data.sql) to populate the schema with sample disaster, victim, and resource records.
 4. **Launch Interactive Dashboard:**
    Open `src/index.html` directly in any web browser to view, search, and copy definitions using the custom showcase dashboard.
 
